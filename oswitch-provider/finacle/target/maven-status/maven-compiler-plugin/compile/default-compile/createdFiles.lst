@@ -1,0 +1,13 @@
+com\ocularminds\oswitch\finacle\C24IntegrationService.class
+com\ocularminds\oswitch\finacle\SendTransactionResponse.class
+com\ocularminds\oswitch\finacle\package-info.class
+com\ocularminds\oswitch\provider\FinacleCoreBankingProvider.class
+com\ocularminds\oswitch\finacle\C24Integrator.class
+com\ocularminds\oswitch\finacle\ObjectFactory.class
+com\ocularminds\oswitch\finacle\SendTransaction.class
+com\ocularminds\oswitch\finacle\FEE.class
+com\ocularminds\oswitch\finacle\TransactionRequest.class
+com\ocularminds\oswitch\finacle\C24TRANRES.class
+com\ocularminds\oswitch\finacle\TransactionResponse.class
+com\ocularminds\oswitch\finacle\C24TRANREQ.class
+com\ocularminds\oswitch\provider\FinacleCoreBankingProvider$1.class

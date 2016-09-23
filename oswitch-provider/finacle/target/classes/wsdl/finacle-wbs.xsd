@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://finaclews.org" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://finaclews.org" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<xsd:element ibmSchExtn:docRoot="true" name="sendTransaction" type="tns:sendTransaction"/>
+<xsd:complexType name="sendTransaction">
+<xsd:sequence>
+<xsd:element minOccurs="0" name="arg0" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:element ibmSchExtn:docRoot="true" name="sendTransactionResponse" type="tns:sendTransactionResponse"/>
+<xsd:complexType name="sendTransactionResponse">
+<xsd:sequence>
+<xsd:element minOccurs="0" name="return" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:schema>

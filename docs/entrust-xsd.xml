@@ -1,0 +1,430 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.2-hudson-740-. --><xs:schema xmlns:tns="http://ws.waei.uba.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://ws.waei.uba.com/">
+
+<xs:element name="adaptiveAuthentication" type="tns:adaptiveAuthentication" />
+
+<xs:element name="adaptiveAuthenticationResponse" type="tns:adaptiveAuthenticationResponse" />
+
+<xs:element name="authenticateAdaptiveSecurityQuestion" type="tns:authenticateAdaptiveSecurityQuestion" />
+
+<xs:element name="authenticateAdaptiveSecurityQuestionResponse" type="tns:authenticateAdaptiveSecurityQuestionResponse" />
+
+<xs:element name="authenticateOTP" type="tns:authenticateOTP" />
+
+<xs:element name="authenticateOTPResponse" type="tns:authenticateOTPResponse" />
+
+<xs:element name="authenticateSecurityQuestion" type="tns:authenticateSecurityQuestion" />
+
+<xs:element name="authenticateSecurityQuestionResponse" type="tns:authenticateSecurityQuestionResponse" />
+
+<xs:element name="authenticateToken" type="tns:authenticateToken" />
+
+<xs:element name="authenticateTokenResponse" type="tns:authenticateTokenResponse" />
+
+<xs:element name="createAuthenticationSecreet" type="tns:createAuthenticationSecreet" />
+
+<xs:element name="createAuthenticationSecreetResponse" type="tns:createAuthenticationSecreetResponse" />
+
+<xs:element name="createEntrustUser" type="tns:createEntrustUser" />
+
+<xs:element name="createEntrustUserResponse" type="tns:createEntrustUserResponse" />
+
+<xs:element name="createNewCorporateEntrustUser" type="tns:createNewCorporateEntrustUser" />
+
+<xs:element name="createNewCorporateEntrustUserResponse" type="tns:createNewCorporateEntrustUserResponse" />
+
+<xs:element name="createNewEntrustUser" type="tns:createNewEntrustUser" />
+
+<xs:element name="createNewEntrustUserResponse" type="tns:createNewEntrustUserResponse" />
+
+<xs:element name="createNewOrUpdateUserQA" type="tns:createNewOrUpdateUserQA" />
+
+<xs:element name="createNewOrUpdateUserQAResponse" type="tns:createNewOrUpdateUserQAResponse" />
+
+<xs:element name="deleteUser" type="tns:deleteUser" />
+
+<xs:element name="deleteUserResponse" type="tns:deleteUserResponse" />
+
+<xs:element name="fetchAuthenticationSecreet" type="tns:fetchAuthenticationSecreet" />
+
+<xs:element name="fetchAuthenticationSecreetResponse" type="tns:fetchAuthenticationSecreetResponse" />
+
+<xs:element name="generateOTP" type="tns:generateOTP" />
+
+<xs:element name="generateOTPResponse" type="tns:generateOTPResponse" />
+
+<xs:element name="getOneSecurityQuestion" type="tns:getOneSecurityQuestion" />
+
+<xs:element name="getOneSecurityQuestionResponse" type="tns:getOneSecurityQuestionResponse" />
+
+<xs:element name="synchronizeToken" type="tns:synchronizeToken" />
+
+<xs:element name="synchronizeTokenResponse" type="tns:synchronizeTokenResponse" />
+
+<xs:element name="updateOrCreateuserContactInfo" type="tns:updateOrCreateuserContactInfo" />
+
+<xs:element name="updateOrCreateuserContactInfoResponse" type="tns:updateOrCreateuserContactInfoResponse" />
+
+<xs:element name="viewOTP" type="tns:viewOTP" />
+
+<xs:element name="viewOTPResponse" type="tns:viewOTPResponse" />
+
+<xs:complexType name="synchronizeToken">
+<xs:sequence>
+<xs:element name="request" type="tns:resetToken" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="resetToken">
+<xs:sequence>
+<xs:element name="response1" type="xs:string" minOccurs="0" />
+<xs:element name="response2" type="xs:string" minOccurs="0" />
+<xs:element name="userGroup" type="xs:string" minOccurs="0" />
+<xs:element name="username" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="synchronizeTokenResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:response" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="response">
+<xs:sequence>
+<xs:element name="errorResponseCode" type="xs:string" minOccurs="0" />
+<xs:element name="errorResponseMessage" type="xs:string" minOccurs="0" />
+<xs:element name="isSuccessful" type="xs:string" minOccurs="0" />
+<xs:element name="response" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="adaptiveAuthentication">
+<xs:sequence>
+<xs:element name="request" type="tns:adaptiveAuthenticationRequest" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="adaptiveAuthenticationRequest">
+<xs:sequence>
+<xs:element name="ipAddress" type="xs:string" minOccurs="0" />
+<xs:element name="userGroup" type="xs:string" minOccurs="0" />
+<xs:element name="username" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="adaptiveAuthenticationResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:response" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="createEntrustUser">
+<xs:sequence>
+<xs:element name="request" type="tns:retailUser" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="retailUser">
+<xs:complexContent>
+<xs:extension base="tns:user">
+<xs:sequence>
+<xs:element name="contactList" type="tns:userContactDetails" nillable="true" minOccurs="0" maxOccurs="unbounded" />
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="user">
+<xs:sequence>
+<xs:element name="clientAppName" type="xs:string" minOccurs="0" />
+<xs:element name="firstName" type="xs:string" minOccurs="0" />
+<xs:element name="surname" type="xs:string" minOccurs="0" />
+<xs:element name="userAlias" type="xs:string" minOccurs="0" />
+<xs:element name="userGroup" type="xs:string" minOccurs="0" />
+<xs:element name="username" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="userContactDetails">
+<xs:complexContent>
+<xs:extension base="tns:nameValue">
+<xs:sequence />
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="nameValue">
+<xs:sequence>
+<xs:element name="name" type="xs:string" minOccurs="0" />
+<xs:element name="value" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="createEntrustUserResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:response" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="createNewOrUpdateUserQA">
+<xs:sequence>
+<xs:element name="request" type="tns:qaRequest" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="qaRequest">
+<xs:sequence>
+<xs:element name="securityQuestions" type="tns:qandA" nillable="true" minOccurs="0" maxOccurs="unbounded" />
+<xs:element name="userGroup" type="xs:string" minOccurs="0" />
+<xs:element name="username" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="qandA">
+<xs:complexContent>
+<xs:extension base="tns:nameValue">
+<xs:sequence />
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="createNewOrUpdateUserQAResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:response" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="fetchAuthenticationSecreet">
+<xs:sequence>
+<xs:element name="parequest" type="tns:paRequest" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="paRequest">
+<xs:sequence>
+<xs:element name="imageCaption" type="xs:string" minOccurs="0" />
+<xs:element name="imageData" type="xs:base64Binary" minOccurs="0" />
+<xs:element name="userId" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="fetchAuthenticationSecreetResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:binaryResponse" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="binaryResponse">
+<xs:sequence>
+<xs:element name="binaryResponse" type="xs:base64Binary" minOccurs="0" />
+<xs:element name="errorResponseCode" type="xs:string" minOccurs="0" />
+<xs:element name="errorResponseMessage" type="xs:string" minOccurs="0" />
+<xs:element name="isSuccessful" type="xs:string" minOccurs="0" />
+<xs:element name="response" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="authenticateAdaptiveSecurityQuestion">
+<xs:sequence>
+<xs:element name="request" type="tns:authenticateSecurityQuestionRequest" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="authenticateSecurityQuestionRequest">
+<xs:sequence>
+<xs:element name="answer" type="xs:string" minOccurs="0" />
+<xs:element name="ipAddress" type="xs:string" minOccurs="0" />
+<xs:element name="userGroup" type="xs:string" minOccurs="0" />
+<xs:element name="username" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="authenticateAdaptiveSecurityQuestionResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:response" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="viewOTP">
+<xs:sequence>
+<xs:element name="userid" type="xs:string" minOccurs="0" />
+<xs:element name="type" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="viewOTPResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="generateOTP">
+<xs:sequence>
+<xs:element name="request" type="tns:otpRequest" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="otpRequest">
+<xs:complexContent>
+<xs:extension base="tns:getOneSecurityQuestionRequest">
+<xs:sequence />
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="getOneSecurityQuestionRequest">
+<xs:sequence>
+<xs:element name="userGroup" type="xs:string" minOccurs="0" />
+<xs:element name="username" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="generateOTPResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:response" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="authenticateSecurityQuestion">
+<xs:sequence>
+<xs:element name="request" type="tns:authenticateSecurityQuestionRequest" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="authenticateSecurityQuestionResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:response" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="authenticateOTP">
+<xs:sequence>
+<xs:element name="request" type="tns:authenticateTokenRequest" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="authenticateTokenRequest">
+<xs:sequence>
+<xs:element name="response" type="xs:string" minOccurs="0" />
+<xs:element name="userGroup" type="xs:string" minOccurs="0" />
+<xs:element name="username" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="authenticateOTPResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:response" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="createNewCorporateEntrustUser">
+<xs:sequence>
+<xs:element name="request" type="tns:corporateUser" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="corporateUser">
+<xs:complexContent>
+<xs:extension base="tns:user">
+<xs:sequence>
+<xs:element name="contactList" type="tns:userContactDetails" nillable="true" minOccurs="0" maxOccurs="unbounded" />
+<xs:element name="corporateName" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="createNewCorporateEntrustUserResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:response" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateOrCreateuserContactInfo">
+<xs:sequence>
+<xs:element name="request" type="tns:userContactDetailList" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="userContactDetailList">
+<xs:sequence>
+<xs:element name="contactList" type="tns:userContactDetails" nillable="true" minOccurs="0" maxOccurs="unbounded" />
+<xs:element name="type" type="xs:string" minOccurs="0" />
+<xs:element name="userGroup" type="xs:string" minOccurs="0" />
+<xs:element name="username" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateOrCreateuserContactInfoResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:response" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deleteUser">
+<xs:sequence>
+<xs:element name="request" type="tns:deleteUserRequest" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deleteUserRequest">
+<xs:sequence>
+<xs:element name="userGroup" type="xs:string" minOccurs="0" />
+<xs:element name="username" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deleteUserResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:response" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getOneSecurityQuestion">
+<xs:sequence>
+<xs:element name="request" type="tns:getOneSecurityQuestionRequest" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getOneSecurityQuestionResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:response" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="createAuthenticationSecreet">
+<xs:sequence>
+<xs:element name="parequest" type="tns:paRequest" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="createAuthenticationSecreetResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:binaryResponse" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="authenticateToken">
+<xs:sequence>
+<xs:element name="request" type="tns:authenticateTokenRequest" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="authenticateTokenResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:response" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="createNewEntrustUser">
+<xs:sequence>
+<xs:element name="request" type="tns:retailUser" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="createNewEntrustUserResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:response" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

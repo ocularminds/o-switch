@@ -1,0 +1,86 @@
+
+
+// Hash a password for the first time
+String hashed = BCrypt.hashpw(password, BCrypt.gensalt());
+
+// gensalt's log_rounds parameter determines the complexity
+// the work factor is 2**log_rounds, and the default is 10
+String hashed = BCrypt.hashpw(password, BCrypt.gensalt(12));
+
+// Check that an unencrypted password matches one that has
+// previously been hashed
+if (BCrypt.checkpw(candidate, hashed))
+	System.out.println("It matches");
+else
+	System.out.println("It does not match");	
+	
+HikariConfig config = new HikariConfig();
+config.setJdbcUrl("jdbc:mysql://localhost:3306/simpsons");
+config.setUsername("bart");
+config.setPassword("51mp50n");
+config.addDataSourceProperty("cachePrepStmts", "true");
+config.addDataSourceProperty("prepStmtCacheSize", "250");
+config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
+
+HikariDataSource ds = new HikariDataSource(config);
+or directly instantiate a HikariDataSource like so:
+
+HikariDataSource ds = new HikariDataSource();
+ds.setJdbcUrl("jdbc:mysql://localhost:3306/simpsons");
+ds.setUsername("bart");
+ds.setPassword("51mp50n");
+...
+or property file based:
+
+// Examines both filesystem and classpath for .properties file
+HikariConfig config = new HikariConfig("/some/path/hikari.properties");
+HikariDataSource ds = new HikariDataSource(config);
+Example property file:
+
+dataSourceClassName=org.postgresql.ds.PGSimpleDataSource
+dataSource.user=test
+dataSource.password=test
+dataSource.databaseName=mydb
+dataSource.portNumber=5432
+dataSource.serverName=localhost
+or java.util.Properties based:
+
+Properties props = new Properties();
+props.setProperty("dataSourceClassName", "org.postgresql.ds.PGSimpleDataSource");
+props.setProperty("dataSource.user", "test");
+props.setProperty("dataSource.password", "test");
+props.setProperty("dataSource.databaseName", "mydb");
+props.put("dataSource.logWriter", new PrintWriter(System.out));
+
+HikariConfig config = new HikariConfig(props);
+HikariDataSource ds = new HikariDataSource(config);
+
+
+
+    private static void createReversalMessage(ISOMsg request, OMElement requestOM,
+            XLinkAccountInfoWrapper accountInfoWrapper, String revKey) throws ISOException {
+
+        request.setMTI("0400");
+        request.set(2, "123456789"); // PAN:123456789
+        request.set(3, "500100"); // 300100 AccType 01-Savings Account
+        request.set(4, "1500");
+        request.set(7, "0421080000");
+        request.set(11, "000000000083");
+        request.set(14, "0422");
+        request.set(18, "6017");
+        request.set(24, "000");
+        request.set(32, "950");
+        request.set(37, "042112345678"); // TrxId 12345678
+        request.set(41, "12345678"); // Need to know
+        request.set(42, "123456789123456"); // Need to know
+        request.set(49, "IDR");
+        request.set(61, "This is MBSB");
+        request.set(90, revKey);// From
+                                // prevously
+                                // done Trx
+        request.set(98, "000000"); // ON US
+        request.set(100, "950");// Need to know
+        request.set(102, "123456789"); // SAME as PAN
+        request.set(103, "123456788"); // REMOTE PAN
+        request.set(127, "123456799"); // From previous Trx
+    }

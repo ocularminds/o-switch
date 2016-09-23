@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="C24IntegrationService" targetNamespace="http://finaclews.org" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://finaclews.org" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:documentation>
+    <wsdl:appinfo source="WMQI_APPINFO">
+      <MRWSDLAppInfo imported="true">
+        <generatedXSD location="finaclews_InlineSchema1.xsd"/>
+        <binding hasEncoding="false" imported="true" name="C24IntegrationServiceSoapBinding" originalBindingStyle="document"/>
+      </MRWSDLAppInfo>
+    </wsdl:appinfo>
+  </wsdl:documentation>
+  <wsdl:types>
+          <xsd:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://finaclews.org" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions">
+<xsd:include schemaLocation="finacle-wbs.xsd"/>
+    </xsd:schema>
+    </wsdl:types>
+  <wsdl:message name="sendTransaction">
+    <wsdl:part element="tns:sendTransaction" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sendTransactionResponse">
+    <wsdl:part element="tns:sendTransactionResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="C24Integrator">
+    <wsdl:operation name="sendTransaction">
+      <wsdl:input message="tns:sendTransaction" name="sendTransaction">
+    </wsdl:input>
+      <wsdl:output message="tns:sendTransactionResponse" name="sendTransactionResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="C24IntegrationServiceSoapBinding" type="tns:C24Integrator">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="sendTransaction">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="sendTransaction">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="sendTransactionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="C24IntegrationService">
+    <wsdl:port binding="tns:C24IntegrationServiceSoapBinding" name="C24IntegrationPort">
+      <soap:address location="http://172.20.236.2:7808/cba/wbs"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
