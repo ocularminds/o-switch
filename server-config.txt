@@ -1,0 +1,13 @@
+52.178.145.117
+52.169.228.105: 50230
+
+.\fast-cash_admin – username            
+ Ab12345678 -- password
+ 
+ The credential is as follows :        
+  
+ Server name :  HQ-AZ-FAST-CASH
+ Username : fast-cash_admin
+ Password :  Ab12345678
+ IP Address : 192.168.180.7           
+ Platform  :  Azure

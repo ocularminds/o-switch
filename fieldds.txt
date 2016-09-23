@@ -1,0 +1,153 @@
+ISO 8583 0200 S
+F2 Primary Acc. Num 5422********6290
+F3 Processing Code 003000
+F4 Amount of Transaction 125.00
+F11 System Trace 000081
+F14 Expiration date 1109
+F18 Merchant Category 5411
+F22 POS Entry Mode 012
+F24 Network International ID 006
+F25 POS condition code 08
+F41 Terminal ID 12776859
+F42 Card acceptor or Merchant # 349000000000
+F49 Transaction Currency code 214
+F62 Invoice/ECR Ref # 000001
+
+ balance inquiry for some account number… so i do like this,
+
+I am also reading some jpos documentation to set those fields…
+
+isoMsg.setMTI("0100");
+isoMsg.setPackager(packager);
+isoMsg.set(2, "0000209");
+isoMsg.set(3, "3010"); // (30 – bal inquiry 10 – savings)
+
+ISOMsg isoMsg = new ISOMsg();
+isoMsg.setMTI("0110"); // response
+isoMsg.setPackager(packager);
+isoMsg.set(4, amount);
+01101000000000000000000000005000
+
+i am not sure if i did correct or wrong.. let me know..
+
+Reply
+
+I’m not sure about BCD with JPOS, do you have any particular reason why you want to send the data in BCD?
+
+@Sanjay:
+For balance inquiry you will need to decide :
+- Account number (#2)
+- Processing code (#3)
+- PIN (#52)
+So I think you just need to add #52
+Some other non mandatory usually:
+- Date/time (#7)
+- STAN (#11)
+- etc
+
+ISO 8583 Format for the Balance Query Request
+—-ISO MESSAGE—–
+MTI : 0100
+Field-2 : 070116123456789
+Field-3 : 301000
+Field-11 : 000001
+RESULT: 0100602000000000000015070116123456789301000000001
+
+ISO 8583 Format for the Balance Query Successful Response
+—-ISO MESSAGE—–
+MTI : 0110
+Field-2 : 070116123456789
+Field-3 : 301000
+Field-4 : 5000
+Field-11 : 000001
+Field-12 : 024100
+Field-13 : 0411
+Field-39 : 00
+
+public LinkedHashMap getBalanceEnquiry(Context context,String accountNumber,String trackValue){
+
+LinkedHashMap balanceEnquiry = new LinkedHashMap();
+
+balanceEnquiry.put("003","311000");
+balanceEnquiry.put("004","000000000000");
+balanceEnquiry.put("007",ProjectUtil.getTransacDateTimeStamp());
+balanceEnquiry.put("011",ProjectUtil.getStanNumber(context));
+balanceEnquiry.put("012",ProjectUtil.getTransacTimeStamp());
+balanceEnquiry.put("013",ProjectUtil.getTransacDateStamp());
+balanceEnquiry.put("015",ProjectUtil.getTransacDateStamp());
+balanceEnquiry.put("018","6011");
+balanceEnquiry.put("041",ProjectUtil.getTermID(context));
+balanceEnquiry.put("048","0130"+trackValue);
+balanceEnquiry.put("049","356");
+balanceEnquiry.put("123","015210101213146002");
+
+return balanceEnquiry;
+}
+
+Then your switch connects to the bank’s CBS which is based on the agre
+test ATM:
+
+00e049534f3030363030303034303132
+3030f030810128a08000000000000600
+00203136353332373030313030333137
+33333238343031303130303030303030
+30303030303138373332393631343032
+31383230323934363032313832303030
+36393335363031323735333237303031
+3130333137333332383d313831313138
+36303833343034393134383733323936
+44413238333130302020202020202020
+34304649535445535441544d2c434845
+4e4e41492c202020204348454e4e4149
+2020202020204348494e333536303731
+33313730393530373136373238353845
+4654
+
+I have :
+MessageId: 1200
+Field 002: 5327001003173328
+Field 003: 401010
+Field 004: 000000000001
+Field 011: 873296
+Field 012: 140218202946
+Field 017: 0218
+Field 024: 200
+Field 032: 935601
+Field 035: 5327001003173328=1811126083
+Field 037: 404914873296
+Field 041: DA283100
+Field 043: FISTESTATM,CHENNAI, CHENNAI CHIN
+Field 049: 356
+Field 102: 1317095
+Field 103: 1672858
+Field 123: EFT
+Bitmaps: f030810128a080000000000006000020
+
+I was able to separate all fields like:
+
+MessageId: 1200
+Field 002: 5327001003173328 : Primary account number (n..19)
+Field 003: 401010 : Processing code (an 6) ??
+Field 004: 000000000001 : Amount transaction (n 16)
+Field 011: 873296 : Systems trace audit number (n 12)
+Field 012: 140218202946 : Date and time local transaction (CCYYMMDDhhmmss)(n 14)
+Field 017: 0218 : Date capture	MMDD	n4 (IMPORTANT !!)
+Field 024: 200 : Function code (n3)
+Field 032: 935601 : Acquiring institution identification code (n..11)
+Field 035: 5327001003173328=1811126083 : Track 2 data (z..37) (The magnetic track)
+Field 037: 404914873296 : retrieval reference no. (anp 12)
+Field 041: DA283100 : Card acceptor terminal identification	(ans 16)
+Field 043: FISTESTATM,CHENNAI, CHENNAI CHIN : Card acceptor name/location (ansb..9999)
+Field 049: 356 : Verification data (ans..999) (INR = 356)
+Field 102: 1317095 : Account identification 1 (ans..28)
+Field 103: 1672858 : Account identification 2 (ans..28)
+Field 123: EFT : Reserved for private use	(ANS..999) Channel ID in this case
+
+But i am puzzled by the beginning of ISO packet:
+00 e0 49 53 4f 30 30 36 30 30 30 30 34 30
+
+What is this? Can you please help me out what it probably mean? Because i need to understand this before testing ATM.
+Hope you respond soon.
+
+Reply
+janani

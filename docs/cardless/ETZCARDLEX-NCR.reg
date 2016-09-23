@@ -1,0 +1,10 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\NCR\Advance NDC\Extensions\Cardless Transaction]
+@=""
+"Active FDK Mask"=dword:000000ff
+"Active PIN Pad Key Mask"=dword:00000400
+"Next State Number"=dword:00000331
+"SkipFitSearch"=dword:00000001
+"Track 2 Data"=";5021920330019330108=1907101?"
+

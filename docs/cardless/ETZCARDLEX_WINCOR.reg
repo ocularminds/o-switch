@@ -1,0 +1,11 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wincor Nixdorf\ProTopas\CurrentVersion\LYNXPAR]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wincor Nixdorf\ProTopas\CurrentVersion\LYNXPAR\APPLICATION]
+"IDLE_ENTER"=",;5021920330019330108=1907101?,,,817,092,0"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wincor Nixdorf\ProTopas\CurrentVersion\CCREPMGR]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wincor Nixdorf\ProTopas\CurrentVersion\CCREPMGR\FRM_REPOSITORY]
+"CCTransactionFW"="C:\\PROTOPAS\\BIN\\dcSttFW.DLL;C:\\PROTOPAS\\BIN\\dcEmvTa.DLL;C:\\PROTOPAS\\BIN\\cltSttFw.dll"

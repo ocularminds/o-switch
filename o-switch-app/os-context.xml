@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+        xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.0.xsd">
+<context:component-scan base-package="com.ocularminds.oswitch.app"/>
+<beans:beans>
+  <beans:bean id="javaCollection" class="com.ocularminds.oswitch.app.CoreProcessor">
+        <property name="processors">
+           <map>
+              <entry key="30" value="BALANCE"/>
+              <entry key="50" value="TRANSFER"/>
+              <entry key="51" value="BILL"/>
+              <entry key="55" value="STATEMENT"/>
+           </map>
+        </property>  
+   </beans:bean>   
+  <beans:bean id="service" class="com.ocularminds.oswitch.app.OsService">
+       <constructor-arg ref="jdbcSource"/>
+  </beans:bean>
+  <beans:bean id="jdbcSource" class="com.ocularminds.oswitch.jdbc.JdbcSource">
+    <constructor-arg ref="hikaricp"/>
+  </beans:bean>
+  <beans:bean id="hikaricp" class="com.zaxxer.hikari.HikariDataSource">
+    <constructor-arg ref="hikariConfig"/>
+  </beans:bean>
+  <beans:bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+    <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+    <property name="jdbcUrl" value="jdbc:mysql://localhost/my_database" />
+    <property name="username" value="my_username" />
+    <property name="password" value="my_password" />
+    <property name="initialSize" value="3" />
+    <property name="maxActive" value="10" />
+  </beans:bean>
+</beans:beans>
