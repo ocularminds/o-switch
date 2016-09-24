@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>BalanceProcessor.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">oswitch-app</a> &gt; <a href="index.source.html" class="el_package">com.ocularminds.oswitch.app</a> &gt; <span class="el_source">BalanceProcessor.java</span></div><h1>BalanceProcessor.java</h1><pre class="source lang-java linenums">package com.ocularminds.oswitch.app;
+
+import com.ocularminds.oswitch.core.CoreBankingProvider;
+import com.ocularminds.oswitch.core.Entry;
+import com.ocularminds.oswitch.core.Fault;
+import org.jpos.iso.ISOException;
+import org.jpos.iso.ISOMsg;
+import java.util.Map;
+
+public class BalanceProcessor implements Processor {
+
+    CoreBankingProvider provider;
+    ISOMsg request;
+
+<span class="nc" id="L15">    public BalanceProcessor(final CoreBankingProvider prov, final ISOMsg req) {</span>
+<span class="nc" id="L16">        this.provider = prov;</span>
+<span class="nc" id="L17">        this.request = req;</span>
+<span class="nc" id="L18">    }</span>
+
+    public ISOMsg process() throws ISOException {
+
+<span class="nc" id="L22">        String pcode = request.getString(3);</span>
+<span class="nc" id="L23">        String ref = request.getString(11);</span>
+<span class="nc" id="L24">        String debit = request.getString(102);</span>
+<span class="nc" id="L25">        byte[] pinbytes = request.getBytes(52);</span>
+<span class="nc" id="L26">        String pin = new String(pinbytes);</span>
+<span class="nc bnc" id="L27" title="All 2 branches missed.">        if (isValidPinOrAccessCode(pin)) {</span>
+<span class="nc" id="L28">            Entry entry = new Entry(debit, null, 0.00d);</span>
+<span class="nc" id="L29">            entry.getReference();</span>
+<span class="nc" id="L30">            Fault fault = provider.balance(entry);</span>
+<span class="nc" id="L31">            request.set(39, fault.getError());</span>
+<span class="nc bnc" id="L32" title="All 2 branches missed.">            if (fault.getError().equals(&quot;00&quot;)) {</span>
+<span class="nc" id="L33">                Map&lt;String, Double&gt; balances = (Map) fault.getData();</span>
+<span class="nc" id="L34">                Double available = balances.get(AVAILABLE_BALANCE);</span>
+<span class="nc" id="L35">                Double ledger = balances.get(LEDGER_BALANCE);</span>
+<span class="nc bnc" id="L36" title="All 2 branches missed.">                String availableAmountSign = available.doubleValue() &lt; 0 ? &quot;D&quot; : &quot;C&quot;;</span>
+<span class="nc bnc" id="L37" title="All 2 branches missed.">                String ledgerAmountSign = ledger.doubleValue() &lt; 0 ? &quot;D&quot; : &quot;C&quot;;</span>
+<span class="nc" id="L38">                StringBuilder sb = new StringBuilder();</span>
+<span class="nc" id="L39">                sb.append(accountType(pcode));</span>
+<span class="nc" id="L40">                sb.append(&quot;02&quot;);// + +amount type(* 01 Account ledger balance* 02 available balance*</span>
+                                // 07 Destination Account ledger balance* 08 Destination Account
+                                // available balance* 20 Amount remaining this cycle.* 40 Amount
+                                // cash.* 42 Amount surcharge
+<span class="nc" id="L44">                sb.append(&quot;NGNK&quot;);// +Currency Code N3+ Currency minor unit N1+</span>
+<span class="nc" id="L45">                sb.append(availableAmountSign);// +Amount Sign A1 - C for Credit, D for Debit</span>
+<span class="nc" id="L46">                sb.append(String.format(&quot;%012d&quot;, available.doubleValue() * 100));// +Value amount</span>
+                                                                                 // N12
+<span class="nc" id="L48">                sb.append(accountType(pcode));</span>
+<span class="nc" id="L49">                sb.append(&quot;02&quot;);</span>
+<span class="nc" id="L50">                sb.append(&quot;NGNK&quot;);</span>
+<span class="nc" id="L51">                sb.append(ledgerAmountSign);</span>
+<span class="nc" id="L52">                sb.append(String.format(&quot;%012d&quot;, ledger.doubleValue() * 100));</span>
+<span class="nc" id="L53">                request.set(54, sb.toString());</span>
+            }
+
+<span class="nc" id="L56">        } else {</span>
+<span class="nc" id="L57">            request.set(39, &quot;51&quot;);</span>
+        }
+
+<span class="nc" id="L60">        return request;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

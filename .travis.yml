@@ -1,8 +1,12 @@
 language: java
 script: mvn clean package 
+install:
+  - mvn test-compile -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+script:
+  - mvn test jacoco:report
 after_success:
-  - mvn clean test jacoco:report coveralls:report
-  - sudo ./.travis/artifact-upload.sh 
+  - mvn coveralls:report
+  - sh ./.travis/artifact-upload.sh 
   
 jdk: oraclejdk8
  
