@@ -31,28 +31,10 @@
       	    <version>1.12</version>
       </dependency>
       <dependency>
-          <groupId>net.revelc.code</groupId>
-          <artifactId>formatter-maven-plugin</artifactId>
-          <version>0.5.2</version>
-          <scope>compile</scope>
-      </dependency>
-      <dependency>
-         <groupId>junit</groupId>
-         <artifactId>junit</artifactId>
-         <version>4.12</version>
-         <scope>test</scope>
-      </dependency>
-      <dependency>
           <groupId>org.apache.commons</groupId>
           <artifactId>commons-lang3</artifactId>
           <version>3.4</version>
-      </dependency>
-      <dependency>
-         <groupId>org.mockito</groupId>
-         <artifactId>mockito-all</artifactId>
-         <version>1.9.5</version>
-         <scope>test</scope>
-      </dependency>
+      </dependency>      
    </dependencies>
    <build>
       <plugins>      
@@ -63,7 +45,7 @@
       	     <configuration>
       	         <keep>true</keep>
 		 <verbose>true</verbose>
-                 <wsdlFiles>finacle-wbs.xml</wsdlFiles>
+                 <wsdlFile>finacle-wbs.xml</wsdlFile>
       		 <packageName>com.ocularminds.oswitch.finacle</packageName>
       		 <keep>true</keep>
       		 <sourceDestDir>${basedir}/src/main/java</sourceDestDir>
@@ -76,37 +58,6 @@
       		 </execution>
       	     </executions>
         </plugin>
-       <plugin>
-              <groupId>net.revelc.code</groupId>
-              <artifactId>formatter-maven-plugin</artifactId>
-              <version>0.5.2</version>
-              <configuration>
-                  <keep>true</keep>
-                  <verbose>true</verbose>
-	          <configFile>${project.basedir}/eclipse-java-google-style.xml</configFile>
-              </configuration>
-              <executions>
-                <execution>
-                  <goals>
-                    <goal>format</goal>
-                  </goals>
-                </execution>
-              </executions>
-       </plugin>
-         <plugin>
-            <groupId>org.codehaus.mojo</groupId>
-            <artifactId>exec-maven-plugin</artifactId>
-            <version>1.4.0</version>
-         </plugin>
-         <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <version>3.3</version>
-            <configuration>
-               <source>1.8</source>
-               <target>1.8</target>
-            </configuration>
-         </plugin>
       </plugins>
    </build>
 </project>

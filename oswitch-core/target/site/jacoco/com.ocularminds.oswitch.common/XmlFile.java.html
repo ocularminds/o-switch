@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>XmlFile.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">oswitch-core</a> &gt; <a href="index.source.html" class="el_package">com.ocularminds.oswitch.common</a> &gt; <span class="el_source">XmlFile.java</span></div><h1>XmlFile.java</h1><pre class="source lang-java linenums">package com.ocularminds.oswitch.common;
+
+import java.io.File;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathFactory;
+import org.w3c.dom.*;
+
+public final class XmlFile {
+
+    Source source;
+    String uri;
+
+<span class="nc" id="L19">    public XmlFile(final Source src, String url) {</span>
+<span class="nc" id="L20">        this.source = src;</span>
+<span class="nc" id="L21">        this.uri = url;</span>
+<span class="nc" id="L22">    }</span>
+
+<span class="nc" id="L24">    public enum Source {</span>
+
+<span class="nc" id="L26">        FILE {</span>
+
+            @Override
+            public Document parse(DocumentBuilder builder, String url) throws Exception {
+<span class="nc" id="L30">                File f = new File(url);</span>
+<span class="nc" id="L31">                return builder.parse(f);</span>
+            }
+
+        },
+<span class="nc" id="L35">        STRING {</span>
+
+            @Override
+            @SuppressWarnings(&quot;deprecation&quot;)
+            public Document parse(DocumentBuilder builder, String url) throws Exception {
+<span class="nc" id="L40">                return builder.parse(new java.io.StringBufferInputStream(url));</span>
+            }
+
+        },
+<span class="nc" id="L44">        URI {</span>
+
+            @Override
+            public Document parse(DocumentBuilder builder, String url) throws Exception {
+
+<span class="nc" id="L49">                URL soapURI = new URL(url);</span>
+<span class="nc" id="L50">                java.io.InputStream is = soapURI.openStream();</span>
+<span class="nc" id="L51">                return builder.parse(is);</span>
+            }
+
+        };
+
+        public abstract Document parse(DocumentBuilder builder, String url) throws Exception;
+    }
+
+    public Document document() throws Exception {
+<span class="nc" id="L60">        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();</span>
+<span class="nc" id="L61">        DocumentBuilder builder = factory.newDocumentBuilder();</span>
+<span class="nc" id="L62">        Document doc = this.source.parse(builder, this.uri);</span>
+<span class="nc" id="L63">        doc.getDocumentElement().normalize();</span>
+<span class="nc" id="L64">        return doc;</span>
+    }
+
+    public List&lt;Element&gt; read(final String obj, final Document doc) {
+<span class="nc" id="L68">        List&lt;Element&gt; records = new ArrayList&lt;&gt;();</span>
+        try {
+<span class="nc" id="L70">            doc.getDocumentElement().normalize();</span>
+<span class="nc" id="L71">            NodeList nodes = doc.getElementsByTagName(obj);</span>
+<span class="nc bnc" id="L72" title="All 2 branches missed.">            for (int x = 0; x &lt; nodes.getLength(); x++) {</span>
+<span class="nc" id="L73">                Node node = nodes.item(x);</span>
+<span class="nc bnc" id="L74" title="All 2 branches missed.">                if (node.getNodeType() == 1) {</span>
+<span class="nc" id="L75">                    Element data = (Element) node;</span>
+<span class="nc" id="L76">                    records.add(data);</span>
+                }
+            }
+
+<span class="nc" id="L80">        } catch (Exception ex) {</span>
+<span class="nc" id="L81">            ex.printStackTrace();</span>
+<span class="nc" id="L82">        }</span>
+<span class="nc" id="L83">        return records;</span>
+    }
+
+    public String valueOf(Document doc, String xpathExpression) {
+<span class="nc" id="L87">        String value = &quot;&quot;;</span>
+        try {
+<span class="nc" id="L89">            XPathFactory xPathFactory = XPathFactory.newInstance();</span>
+<span class="nc" id="L90">            XPath xpath = xPathFactory.newXPath();</span>
+<span class="nc" id="L91">            value = xpath.evaluate(xpathExpression, doc, XPathConstants.STRING).toString();</span>
+<span class="nc" id="L92">        } catch (Exception ex) {</span>
+<span class="nc" id="L93">            ex.printStackTrace();</span>
+<span class="nc" id="L94">        }</span>
+<span class="nc" id="L95">        return value;</span>
+    }
+
+    public String valueOf(String tag, Element data) {
+<span class="nc" id="L99">        NodeList nodes = data.getElementsByTagName(tag).item(0).getChildNodes();</span>
+<span class="nc" id="L100">        Node node = nodes.item(0);</span>
+<span class="nc bnc" id="L101" title="All 2 branches missed.">        return node != null ? node.getNodeValue() : null;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

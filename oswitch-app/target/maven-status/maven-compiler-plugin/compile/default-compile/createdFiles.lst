@@ -10,7 +10,6 @@ com\ocularminds\oswitch\app\model\Transactions$3.class
 com\ocularminds\oswitch\app\ProcessorType$1.class
 com\ocularminds\oswitch\app\OsCore.class
 com\ocularminds\oswitch\app\model\Cardless$2.class
-com\ocularminds\oswitch\core\ResponseCode.class
 com\ocularminds\oswitch\app\model\Cardless.class
 com\ocularminds\oswitch\app\model\Preferences$2.class
 com\ocularminds\oswitch\app\model\Cardlex.class
