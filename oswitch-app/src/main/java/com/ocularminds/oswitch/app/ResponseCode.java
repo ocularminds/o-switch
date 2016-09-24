@@ -53,16 +53,12 @@ public class ResponseCode {
         codes.put("75", "Allowable number of PIN-entry tries exceeded");
         codes.put("76", "Unable to locate previous message");
         codes.put("77", "Inconsistent transaction data with original message");
-        codes.put(
-                "78",
-                "’Blocked, first used’—The transaction is from a new cardholder, and the card has not been properly unblocked.");
+        codes.put("78", "Blocked, first usedï¿½ Do PIN reset.");
         codes.put("80", "Visa transactions: credit issuer unavailable.");
         codes.put("81", "PIN cryptographic error found.");
         codes.put("82", "Negative CAM, dCVV, iCVV, or CVV results");
         codes.put("83", "Unable to verify PIN");
-        codes.put(
-                "85",
-                "No reason to decline a request for account number verification, address verification, CVV2 verification, or a credit voucher or merchandise return");
+        codes.put("85", "No reason to decline a request for account number verification");
         codes.put("91", "Issuer unavailable or switch inoperative .");
         codes.put("92", "Destination cannot be found for routing");
         codes.put("93", "Transaction cannot be completed, violation of law");

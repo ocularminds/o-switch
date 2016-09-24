@@ -37,10 +37,10 @@ public class BalanceProcessor implements Processor {
                 String ledgerAmountSign = ledger.doubleValue() < 0 ? "D" : "C";
                 StringBuilder sb = new StringBuilder();
                 sb.append(accountType(pcode));
-                sb.append("02");// + +amount type(• 01 Account ledger balance• 02 available balance•
-                                // 07 Destination Account ledger balance• 08 Destination Account
-                                // available balance• 20 Amount remaining this cycle.• 40 Amount
-                                // cash.• 42 Amount surcharge
+                sb.append("02");// + +amount type(* 01 Account ledger balance* 02 available balance*
+                                // 07 Destination Account ledger balance* 08 Destination Account
+                                // available balance* 20 Amount remaining this cycle.* 40 Amount
+                                // cash.* 42 Amount surcharge
                 sb.append("NGNK");// +Currency Code N3+ Currency minor unit N1+
                 sb.append(availableAmountSign);// +Amount Sign A1 - C for Credit, D for Debit
                 sb.append(String.format("%012d", available.doubleValue() * 100));// +Value amount
