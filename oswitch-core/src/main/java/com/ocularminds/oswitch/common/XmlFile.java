@@ -36,6 +36,7 @@ public final class XmlFile {
         STRING {
 
             @Override
+            @SuppressWarnings("deprecation")
             public Document parse(DocumentBuilder builder, String url) throws Exception {
                 StringBufferInputStream stream = new StringBufferInputStream(url);
                 return builder.parse(stream);
