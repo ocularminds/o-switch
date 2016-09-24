@@ -1,7 +1,6 @@
 package com.ocularminds.oswitch.common;
 
 import java.io.File;
-import java.io.StringBufferInputStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,8 +37,7 @@ public final class XmlFile {
             @Override
             @SuppressWarnings("deprecation")
             public Document parse(DocumentBuilder builder, String url) throws Exception {
-                StringBufferInputStream stream = new StringBufferInputStream(url);
-                return builder.parse(stream);
+                return builder.parse(new java.io.StringBufferInputStream(url));
             }
 
         },
