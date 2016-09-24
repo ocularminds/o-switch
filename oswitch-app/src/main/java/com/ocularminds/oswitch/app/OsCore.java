@@ -59,7 +59,7 @@ public class OsCore implements ISORequestListener {
         CoreBankingProvider provider = (CoreBankingProvider) ctx.getBean("coreBankingProvider");
         CoreProcessor cp = (CoreProcessor) ctx.getBean("coreProcessor");
         OsService service = (OsService) ctx.getBean("service");
-        Map<String, String> processors = cp.getProcessors();
+        Map<String, String> processors = (Map<String, String>) cp.getProcessors();
         org.jpos.util.Logger loga = new org.jpos.util.Logger();
         loga.addListener(new SimpleLogListener(System.out));
         ServerChannel channel = new PostChannel(new PostPackager());

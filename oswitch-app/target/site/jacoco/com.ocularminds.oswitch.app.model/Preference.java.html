@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Preference.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">oswitch-app</a> &gt; <a href="index.source.html" class="el_package">com.ocularminds.oswitch.app.model</a> &gt; <span class="el_source">Preference.java</span></div><h1>Preference.java</h1><pre class="source lang-java linenums">package com.ocularminds.oswitch.app.model;
+
+<span class="nc" id="L3">public class Preference {</span>
+
+    private String id;
+
+    private double amount;
+
+    private String token;
+
+    private String account;
+
+    private String language;
+
+    public String getId() {
+<span class="nc" id="L16">        return id;</span>
+    }
+
+    public void setId(final String xid) {
+<span class="nc" id="L20">        this.id = xid;</span>
+<span class="nc" id="L21">    }</span>
+
+    public double getAmount() {
+<span class="nc" id="L24">        return amount;</span>
+    }
+
+    public void setAmount(double amount) {
+<span class="nc" id="L28">        this.amount = amount;</span>
+<span class="nc" id="L29">    }</span>
+
+    public String getToken() {
+<span class="nc" id="L32">        return token;</span>
+    }
+
+    public void setToken(String token) {
+<span class="nc" id="L36">        this.token = token;</span>
+<span class="nc" id="L37">    }</span>
+
+    public String getAccount() {
+<span class="nc" id="L40">        return account;</span>
+    }
+
+    public void setAccount(String account) {
+<span class="nc" id="L44">        this.account = account;</span>
+<span class="nc" id="L45">    }</span>
+
+    public String getLanguage() {
+<span class="nc" id="L48">        return language;</span>
+    }
+
+    public void setLanguage(String language) {
+<span class="nc" id="L52">        this.language = language;</span>
+<span class="nc" id="L53">    }</span>
+
+    @Override
+    public String toString() {
+<span class="nc" id="L57">        return &quot;ClassPojo [amount = &quot; + amount + &quot;, token = &quot; + token + &quot;, account = &quot; + account</span>
+                + &quot;, language = &quot; + language + &quot;]&quot;;
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>
