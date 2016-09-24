@@ -22,24 +22,7 @@
 		 <!-- aggregated reports for multi-module projects -->
 		 <aggregate>true</aggregate>
 	     </configuration>
-         </plugin>         
-	 <plugin>
-		<groupId>com.jolira</groupId>
-		<artifactId>onejar-maven-plugin</artifactId>
-		<version>1.4.4</version>
-		<executions>
-		 <execution>
-		     <configuration>
-			  <mainClass>com.ocularminds.oswitch.app.OsCore</mainClass>
-			   <attachToBuild>true</attachToBuild>
-			   <filename>${project.artifactId}.${project.packaging}</filename>
-		     </configuration>
-		     <goals>
-			 <goal>one-jar</goal>
-		     </goals>
-		 </execution>
-	     </executions>
-         </plugin>
+         </plugin> 
        </plugins>
        </build>
         <modules>
