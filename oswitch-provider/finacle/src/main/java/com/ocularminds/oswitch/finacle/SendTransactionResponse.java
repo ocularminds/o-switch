@@ -31,27 +31,27 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "sendTransactionResponse", propOrder = {"_return"})
 public class SendTransactionResponse {
 
-  @XmlElement(name = "return")
-  protected String _return;
+    @XmlElement(name = "return")
+    protected String _return;
 
-  /**
-   * Gets the value of the return property.
-   * 
-   * @return possible object is {@link String }
-   * 
-   */
-  public String getReturn() {
-    return _return;
-  }
+    /**
+     * Gets the value of the return property.
+     * 
+     * @return possible object is {@link String }
+     * 
+     */
+    public String getReturn() {
+        return _return;
+    }
 
-  /**
-   * Sets the value of the return property.
-   * 
-   * @param value allowed object is {@link String }
-   * 
-   */
-  public void setReturn(String value) {
-    this._return = value;
-  }
+    /**
+     * Sets the value of the return property.
+     * 
+     * @param value allowed object is {@link String }
+     * 
+     */
+    public void setReturn(String value) {
+        this._return = value;
+    }
 
 }

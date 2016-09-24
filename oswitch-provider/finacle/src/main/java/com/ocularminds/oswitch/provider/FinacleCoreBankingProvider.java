@@ -17,6 +17,8 @@ import com.stanfy.gsonxml.GsonXml;
 import com.stanfy.gsonxml.GsonXmlBuilder;
 import com.stanfy.gsonxml.XmlParserCreator;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -65,9 +67,9 @@ public class FinacleCoreBankingProvider implements CoreBankingProvider {
             String balance = feeback.getAVAILABLE_BALANCE();
             if (error.equals("000")) {
                 fault.setError("00");
-                Map<String, Double> data = new HashMap<String,Double>();
-                data.put("available_balance", new Double(feeback.getAVAILABLE_BALANCE());
-                data.put("ledger_balance", new Double(feeback.getLEDGER_BALANCE());
+                Map<String, Double> data = new HashMap<String, Double>();
+                data.put("available_balance", new Double(feeback.getAVAILABLE_BALANCE()));
+                data.put("ledger_balance", new Double(feeback.getLEDGER_BALANCE()));
                 fault.setData(balance);
             }
         } catch (Exception ex) {

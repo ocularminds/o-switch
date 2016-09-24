@@ -18,15 +18,15 @@ import javax.xml.ws.ResponseWrapper;
 public interface C24Integrator {
 
 
-  /**
-   * 
-   * @param arg0
-   * @return returns java.lang.String
-   */
-  @WebMethod
-  @WebResult(targetNamespace = "")
-  @RequestWrapper(localName = "sendTransaction", targetNamespace = "http://finaclews.org", className = "com.ocularminds.oswitch.finacle.SendTransaction")
-  @ResponseWrapper(localName = "sendTransactionResponse", targetNamespace = "http://finaclews.org", className = "com.ocularminds.oswitch.finacle.SendTransactionResponse")
-  public String sendTransaction(@WebParam(name = "arg0", targetNamespace = "") String arg0);
+    /**
+     * 
+     * @param arg0
+     * @return returns java.lang.String
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "sendTransaction", targetNamespace = "http://finaclews.org", className = "com.ocularminds.oswitch.finacle.SendTransaction")
+    @ResponseWrapper(localName = "sendTransactionResponse", targetNamespace = "http://finaclews.org", className = "com.ocularminds.oswitch.finacle.SendTransactionResponse")
+    public String sendTransaction(@WebParam(name = "arg0", targetNamespace = "") String arg0);
 
 }
