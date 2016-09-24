@@ -17,12 +17,12 @@ public final class JdbcSource {
 <span class="nc" id="L17">    private static Logger logger = Logger.getLogger(JdbcSource.class.getName());</span>
 
 <span class="nc" id="L19">    public JdbcSource(final DataSource src) {</span>
-<span class="nc" id="L20">        source = src;</span>
+<span class="nc" id="L20">        this.source = src;</span>
 <span class="nc" id="L21">    }</span>
 
 <span class="nc" id="L23">    public JdbcSource(String jnd) {</span>
         try {
-<span class="nc" id="L25">            source =</span>
+<span class="nc" id="L25">            this.source =</span>
 <span class="nc" id="L26">                    (DataSource) (new InitialContext()).lookup(String.format(&quot;java:/%s&quot;,</span>
                             new Object[] {jnd}));
 <span class="nc" id="L28">        } catch (Exception ex) {</span>
@@ -31,39 +31,39 @@ public final class JdbcSource {
 <span class="nc" id="L31">    }</span>
 
     public DataSource get() throws Exception {
-<span class="nc" id="L34">        return source;</span>
+<span class="nc" id="L34">        return this.source;</span>
     }
 
     public Connection connection() throws Exception {
-<span class="nc" id="L38">        return get().getConnection();</span>
+<span class="nc" id="L38">        return this.get().getConnection();</span>
     }
 
     public final void close(Connection con, PreparedStatement ps) {
-<span class="nc" id="L42">        close(con, null, ps, null, null);</span>
+<span class="nc" id="L42">        this.close(con, null, ps, null, null);</span>
 <span class="nc" id="L43">    }</span>
 
     public final void close(Connection con, PreparedStatement ps, ResultSet rs) {
-<span class="nc" id="L46">        close(con, null, ps, null, rs);</span>
+<span class="nc" id="L46">        this.close(con, null, ps, null, rs);</span>
 <span class="nc" id="L47">    }</span>
 
     public final void close(Connection con, CallableStatement cs) {
-<span class="nc" id="L50">        close(con, null, null, cs, null);</span>
+<span class="nc" id="L50">        this.close(con, null, null, cs, null);</span>
 <span class="nc" id="L51">    }</span>
 
     public final void close(Connection con, CallableStatement cs, ResultSet rs) {
-<span class="nc" id="L54">        close(con, null, null, cs, rs);</span>
+<span class="nc" id="L54">        this.close(con, null, null, cs, rs);</span>
 <span class="nc" id="L55">    }</span>
 
     public final void close(Connection con, Statement s) {
-<span class="nc" id="L58">        close(con, s, null, null, null);</span>
+<span class="nc" id="L58">        this.close(con, s, null, null, null);</span>
 <span class="nc" id="L59">    }</span>
 
     public final void close(Connection con, Statement s, ResultSet rs) {
-<span class="nc" id="L62">        close(con, s, null, null, rs);</span>
+<span class="nc" id="L62">        this.close(con, s, null, null, rs);</span>
 <span class="nc" id="L63">    }</span>
 
     public final void close(Connection con) {
-<span class="nc" id="L66">        close(con, null, null, null, null);</span>
+<span class="nc" id="L66">        this.close(con, null, null, null, null);</span>
 <span class="nc" id="L67">    }</span>
 
     public final void close(Connection con, Statement s, PreparedStatement ps,

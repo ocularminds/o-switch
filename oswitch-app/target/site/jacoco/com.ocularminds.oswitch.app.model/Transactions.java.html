@@ -20,8 +20,8 @@ public class Transactions {
 <span class="nc" id="L20">    }</span>
 
 <span class="nc" id="L22">    public Transactions(JdbcSource src) {</span>
-<span class="nc" id="L23">        logger = Logger.getLogger(Transactions.class.getName());</span>
-<span class="nc" id="L24">        source = src;</span>
+<span class="nc" id="L23">        this.logger = Logger.getLogger(Transactions.class.getName());</span>
+<span class="nc" id="L24">        this.source = src;</span>
 <span class="nc" id="L25">    }</span>
 
     public Transaction get(String id) {
@@ -103,8 +103,8 @@ public class Transactions {
 <span class="nc" id="L103">                                    .append(&quot;beneficiary&quot;).append(&quot;from os_trans&quot;).toString())</span>
 <span class="nc" id="L104">                            .select(new Outcome&lt;List&lt;Transaction&gt;&gt;() {</span>
                                 @Override
-                                public List&lt;Transaction&gt; handle(ResultSet rs, Statement st)
-                                        throws SQLException {
+                                public List&lt;Transaction&gt; handle(final ResultSet rs,
+                                        final Statement st) throws SQLException {
 <span class="nc" id="L108">                                    final List&lt;Transaction&gt; records = new ArrayList&lt;&gt;();</span>
 <span class="nc bnc" id="L109" title="All 2 branches missed.">                                    while (rs.next()) {</span>
 <span class="nc" id="L110">                                        records.add(read(rs));</span>
@@ -118,7 +118,7 @@ public class Transactions {
 <span class="nc" id="L118">        return records;</span>
     }
 
-    public Transaction read(ResultSet rs) {
+    public Transaction read(final ResultSet rs) {
 <span class="nc" id="L122">        Transaction transaction = new Transaction();</span>
         try {
 <span class="nc" id="L124">            String id = rs.getString(&quot;tran_id&quot;);</span>

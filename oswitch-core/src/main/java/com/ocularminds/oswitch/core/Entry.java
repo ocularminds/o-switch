@@ -36,42 +36,42 @@ public class Entry {
      * @param beneficiary
      * @param reference
      */
-    public Entry(final String debit, final String credit, final double amt) {
-        this.debit = debit;
-        this.credit = credit;
-        this.amount = amount;
+    public Entry(final String deb, final String cre, final double amt) {
+        this.debit = deb;
+        this.credit = cre;
+        this.amount = amt;
     }
 
     /**
      *
      * @return The id
      */
-    public String getId() {
-        return id;
+    public final String getId() {
+        return this.id;
     }
 
     /**
      *
      * @param id The id
      */
-    public void setId(String id) {
-        this.id = id;
+    public void setId(final String idz) {
+        this.id = idz;
     }
 
     /**
      *
      * @return The reference
      */
-    public String getReference() {
-        return reference;
+    public final String getReference() {
+        return this.reference;
     }
 
     /**
      *
      * @param reference The reference
      */
-    public void setReference(String reference) {
-        this.reference = reference;
+    public void setReference(final String ref) {
+        this.reference = ref;
     }
 
     /**
@@ -79,47 +79,47 @@ public class Entry {
      * @return The debit
      */
     public String getDebit() {
-        return debit;
+        return this.debit;
     }
 
     /**
      *
      * @param debit The debit
      */
-    public void setDebit(String debit) {
-        this.debit = debit;
+    public final void setDebit(final String dbt) {
+        this.debit = dbt;
     }
 
     /**
      *
      * @return The credit
      */
-    public String getCredit() {
-        return credit;
+    public final String getCredit() {
+        return this.credit;
     }
 
     /**
      *
      * @param credit The credit
      */
-    public void setCredit(String credit) {
-        this.credit = credit;
+    public void setCredit(final String cdt) {
+        this.credit = cdt;
     }
 
     /**
      *
      * @return The type
      */
-    public Type getType() {
-        return type;
+    public final Type getType() {
+        return this.type;
     }
 
     /**
      *
      * @param type The type
      */
-    public void setType(Type type) {
-        this.type = type;
+    public void setType(final Type typ) {
+        this.type = typ;
     }
 
     /**
@@ -127,7 +127,7 @@ public class Entry {
      * @return The amount
      */
     public double getAmount() {
-        return amount;
+        return this.amount;
     }
 
     /**
@@ -143,15 +143,15 @@ public class Entry {
      * @return The date
      */
     public Date getDate() {
-        return date;
+        return this.date;
     }
 
     /**
      *
      * @param date The date
      */
-    public void setDate(Date date) {
-        this.date = date;
+    public final void setDate(final Date dat) {
+        this.date = dat;
     }
 
     /**
@@ -159,30 +159,30 @@ public class Entry {
      * @return The beneficiary
      */
     public String getBeneficiary() {
-        return beneficiary;
+        return this.beneficiary;
     }
 
     /**
      *
      * @param beneficiary The beneficiary
      */
-    public void setBeneficiary(String beneficiary) {
-        this.beneficiary = beneficiary;
+    public final void setBeneficiary(final String ben) {
+        this.beneficiary = ben;
     }
 
     /**
      *
      * @return The beneficiary
      */
-    public String getAccount() {
-        return account;
+    public final String getAccount() {
+        return this.account;
     }
 
     /**
      *
      * @param beneficiary The beneficiary
      */
-    public void setAccount(final String acct) {
+    public final void setAccount(final String acct) {
         this.account = acct;
     }
 
@@ -190,22 +190,23 @@ public class Entry {
      *
      * @return The transaction narration
      */
-    public String getNarration() {
-        return narration;
+    public final String getNarration() {
+        return this.narration;
     }
 
     /**
      *
      * @param narrat The transaction narration
      */
-    public void setNarration(final String narrat) {
+    public final void setNarration(final String narrat) {
         this.narration = narrat;
     }
 
     @Override
     public String toString() {
-        return new StringBuilder(debit).append(credit).append(amount).append(reference)
-                .append(type).append(date).append(beneficiary).toString();
+        return new StringBuilder(this.debit).append(this.credit).append(this.amount)
+                .append(this.reference).append(this.type).append(this.date)
+                .append(this.beneficiary).toString();
     }
 
     @Override
