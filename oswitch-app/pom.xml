@@ -107,6 +107,14 @@
                <target>1.8</target>
             </configuration>
          </plugin>
+         <plugin>
+	     <groupId>org.eluder.coveralls</groupId>
+	     <artifactId>coveralls-maven-plugin</artifactId>
+	     <version>4.2.0</version>
+	     <configuration>
+	         <repoToken>M2nSbsAEPe7ORdvTp7RAhVeC4L0a9TooM</repoToken>
+	     </configuration>
+         </plugin>
 	 <plugin>
 		<groupId>com.jolira</groupId>
 		<artifactId>onejar-maven-plugin</artifactId>

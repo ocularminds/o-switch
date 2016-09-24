@@ -1,5 +1,6 @@
 language: java
-script: mvn clean test
+script: mvn test
+  
 jdk: oraclejdk8
  
 env:
@@ -8,4 +9,5 @@ env:
   - secure: OekVM5ZyLGHpqurOUWJcq0kKBA78WKZdXaA9aylwrjjQFeVoZxyxeZTYbhLajN4Ggg4Th58QwjUHpwcgZlnsxx4heDo1wyHxXojJd0H1LWKXJwet82IXaFJbl+Yz/htr7uWSFTUF6Szx70cpMxlGe3qsIFlgViEo9UGhHHdrjdY=
  
 after_success:
+  - mvn clean test coveralls:report
   ./.travis/artifact-upload.sh
