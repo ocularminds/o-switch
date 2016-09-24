@@ -1,5 +1,5 @@
 language: java
-script: mvn clean test 
+script: mvn clean package 
 after_success:
   - mvn clean test jacoco:report coveralls:report
   - sudo ./.travis/artifact-upload.sh 
@@ -10,7 +10,4 @@ env:
   global:
   - secure: L2lr/F0gIvyVUl0nJ7w9saGV7wZkL6nO61IxilDY/76iTlnhrFXn5Q8vATGbiRYdDW/tG1kyDUbKaWSkYrpV2Agm4wV/KmMg2CWRiIcQPPqwSEENx/1UZ/dBnCQGcRkkYApu5ayjGnX3Srg3ty1zvdud/O8tiKtWkkBDipJSpfY=
   - secure: OekVM5ZyLGHpqurOUWJcq0kKBA78WKZdXaA9aylwrjjQFeVoZxyxeZTYbhLajN4Ggg4Th58QwjUHpwcgZlnsxx4heDo1wyHxXojJd0H1LWKXJwet82IXaFJbl+Yz/htr7uWSFTUF6Szx70cpMxlGe3qsIFlgViEo9UGhHHdrjdY=
-  
-service_name: travis-pro
-repo_token: M2nSbsAEPe7ORdvTp7RAhVeC4L0a9TooM
 

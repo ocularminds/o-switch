@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+<context:annotation-config/>
+<context:component-scan base-package="com.ocularminds.oswitch.app"/>
+<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	<property name="location">
+		<value>oswitch.config.properties</value>
+	</property>
+</bean>
+<bean id="coreBankingProvider" class="com.ocularminds.oswitch.provider.FinacleCoreBankingProvider"/>
+<bean id="coreProcessor" class="com.ocularminds.oswitch.app.CoreProcessor">
+        <property name="processors">
+           <map>
+              <entry key="30" value="BALANCE"/>
+              <entry key="50" value="TRANSFER"/>
+              <entry key="51" value="BILL"/>
+              <entry key="55" value="STATEMENT"/>
+           </map>
+        </property>  
+   </bean>   
+  <bean id="service" class="com.ocularminds.oswitch.app.OsService">
+       <constructor-arg ref="jdbcSource"/>
+  </bean>
+  <bean id="jdbcSource" class="com.ocularminds.oswitch.app.jdbc.JdbcSource">
+    <constructor-arg ref="hikaricp"/>
+  </bean>
+  <bean id="hikaricp" class="com.zaxxer.hikari.HikariDataSource">
+    <constructor-arg ref="hikariConfig"/>
+  </bean>
+  <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+     <constructor-arg ref="dbProperties"/>
+  </bean>
+  <bean id="dbProperties"
+       class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+    <property name="properties">
+      <props>
+        <prop key="dataSourceClassName">${oswitch.db.class}</prop>
+        <prop key="dataSource.user">${oswitch.db.user}</prop>
+        <prop key="dataSource.password">${oswitch.db.pass}</prop>
+        <prop key="dataSource.databaseName">${oswitch.db.name}</prop>
+        <prop key="dataSource.portNumber">${oswitch.db.port}</prop>
+        <prop key="dataSource.serverName">${oswitch.db.addr}</prop>
+      </props>
+    </property>
+</bean>
+</beans>
