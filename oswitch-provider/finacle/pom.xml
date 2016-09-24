@@ -63,7 +63,7 @@
       	     <configuration>
       	         <keep>true</keep>
 		 <verbose>true</verbose>
-                 <wsdlFiles>finacle-wbs.xml</wsdlFiles>
+                 <wsdlFile>finacle-wbs.xml</wsdlFile>
       		 <packageName>com.ocularminds.oswitch.finacle</packageName>
       		 <keep>true</keep>
       		 <sourceDestDir>${basedir}/src/main/java</sourceDestDir>
