@@ -19,53 +19,53 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-  private final static QName _SendTransaction_QNAME = new QName("http://finaclews.org",
-      "sendTransaction");
-  private final static QName _SendTransactionResponse_QNAME = new QName("http://finaclews.org",
-      "sendTransactionResponse");
+    private final static QName _SendTransaction_QNAME = new QName("http://finaclews.org",
+            "sendTransaction");
+    private final static QName _SendTransactionResponse_QNAME = new QName("http://finaclews.org",
+            "sendTransactionResponse");
 
-  /**
-   * Create a new ObjectFactory that can be used to create new instances of schema derived classes
-   * for package: com.ocularminds.oswitch.finacle
-   * 
-   */
-  public ObjectFactory() {}
+    /**
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes
+     * for package: com.ocularminds.oswitch.finacle
+     * 
+     */
+    public ObjectFactory() {}
 
-  /**
-   * Create an instance of {@link SendTransactionResponse }
-   * 
-   */
-  public SendTransactionResponse createSendTransactionResponse() {
-    return new SendTransactionResponse();
-  }
+    /**
+     * Create an instance of {@link SendTransaction }
+     * 
+     */
+    public SendTransaction createSendTransaction() {
+        return new SendTransaction();
+    }
 
-  /**
-   * Create an instance of {@link SendTransaction }
-   * 
-   */
-  public SendTransaction createSendTransaction() {
-    return new SendTransaction();
-  }
+    /**
+     * Create an instance of {@link SendTransactionResponse }
+     * 
+     */
+    public SendTransactionResponse createSendTransactionResponse() {
+        return new SendTransactionResponse();
+    }
 
-  /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link SendTransaction }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://finaclews.org", name = "sendTransaction")
-  public JAXBElement<SendTransaction> createSendTransaction(SendTransaction value) {
-    return new JAXBElement<SendTransaction>(_SendTransaction_QNAME, SendTransaction.class, null,
-        value);
-  }
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SendTransaction }{@code >}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://finaclews.org", name = "sendTransaction")
+    public JAXBElement<SendTransaction> createSendTransaction(SendTransaction value) {
+        return new JAXBElement<SendTransaction>(_SendTransaction_QNAME, SendTransaction.class,
+                null, value);
+    }
 
-  /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link SendTransactionResponse }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://finaclews.org", name = "sendTransactionResponse")
-  public JAXBElement<SendTransactionResponse> createSendTransactionResponse(
-      SendTransactionResponse value) {
-    return new JAXBElement<SendTransactionResponse>(_SendTransactionResponse_QNAME,
-        SendTransactionResponse.class, null, value);
-  }
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SendTransactionResponse }{@code >}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://finaclews.org", name = "sendTransactionResponse")
+    public JAXBElement<SendTransactionResponse> createSendTransactionResponse(
+            SendTransactionResponse value) {
+        return new JAXBElement<SendTransactionResponse>(_SendTransactionResponse_QNAME,
+                SendTransactionResponse.class, null, value);
+    }
 
 }

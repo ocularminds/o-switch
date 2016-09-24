@@ -1,0 +1,3 @@
+Cardlex - {"account":"","token":"","amount":34, "date":{}}
+Preference - {"account":"", "token":"","amount":09.00,"language":""}
+
