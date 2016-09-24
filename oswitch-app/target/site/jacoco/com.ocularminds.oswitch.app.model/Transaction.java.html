@@ -10,7 +10,7 @@ public class Transaction extends Entry {
     // private String
 
 <span class="nc" id="L12">    public enum Channel {</span>
-<span class="nc" id="L13">        ATM, WEB, POS, API</span>
+<span class="nc" id="L13">        ATM, WEB, POS, API;</span>
     }
 
     public Transaction() {
@@ -29,7 +29,7 @@ public class Transaction extends Entry {
 <span class="nc" id="L29">        return this.channel;</span>
     }
 
-    public void setChannel(final Channel chan) {
+    public final void setChannel(final Channel chan) {
 <span class="nc" id="L33">        this.channel = chan;</span>
 <span class="nc" id="L34">    }</span>
 }

@@ -20,8 +20,8 @@ public class Transactions {
     }
 
     public Transactions(JdbcSource src) {
-        logger = Logger.getLogger(Transactions.class.getName());
-        source = src;
+        this.logger = Logger.getLogger(Transactions.class.getName());
+        this.source = src;
     }
 
     public Transaction get(String id) {
@@ -103,8 +103,8 @@ public class Transactions {
                                     .append("beneficiary").append("from os_trans").toString())
                             .select(new Outcome<List<Transaction>>() {
                                 @Override
-                                public List<Transaction> handle(ResultSet rs, Statement st)
-                                        throws SQLException {
+                                public List<Transaction> handle(final ResultSet rs,
+                                        final Statement st) throws SQLException {
                                     final List<Transaction> records = new ArrayList<>();
                                     while (rs.next()) {
                                         records.add(read(rs));
@@ -118,7 +118,7 @@ public class Transactions {
         return records;
     }
 
-    public Transaction read(ResultSet rs) {
+    public Transaction read(final ResultSet rs) {
         Transaction transaction = new Transaction();
         try {
             String id = rs.getString("tran_id");

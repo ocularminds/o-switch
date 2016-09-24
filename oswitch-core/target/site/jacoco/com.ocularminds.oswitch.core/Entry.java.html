@@ -36,42 +36,42 @@ public class Entry {
      * @param beneficiary
      * @param reference
      */
-<span class="nc" id="L39">    public Entry(final String debit, final String credit, final double amt) {</span>
-<span class="nc" id="L40">        this.debit = debit;</span>
-<span class="nc" id="L41">        this.credit = credit;</span>
-<span class="nc" id="L42">        this.amount = amount;</span>
-<span class="nc" id="L43">    }</span>
+<span class="fc" id="L39">    public Entry(final String deb, final String cre, final double amt) {</span>
+<span class="fc" id="L40">        this.debit = deb;</span>
+<span class="fc" id="L41">        this.credit = cre;</span>
+<span class="fc" id="L42">        this.amount = amt;</span>
+<span class="fc" id="L43">    }</span>
 
     /**
      *
      * @return The id
      */
-    public String getId() {
-<span class="nc" id="L50">        return id;</span>
+    public final String getId() {
+<span class="nc" id="L50">        return this.id;</span>
     }
 
     /**
      *
      * @param id The id
      */
-    public void setId(String id) {
-<span class="nc" id="L58">        this.id = id;</span>
+    public void setId(final String idz) {
+<span class="nc" id="L58">        this.id = idz;</span>
 <span class="nc" id="L59">    }</span>
 
     /**
      *
      * @return The reference
      */
-    public String getReference() {
-<span class="nc" id="L66">        return reference;</span>
+    public final String getReference() {
+<span class="nc" id="L66">        return this.reference;</span>
     }
 
     /**
      *
      * @param reference The reference
      */
-    public void setReference(String reference) {
-<span class="nc" id="L74">        this.reference = reference;</span>
+    public void setReference(final String ref) {
+<span class="nc" id="L74">        this.reference = ref;</span>
 <span class="nc" id="L75">    }</span>
 
     /**
@@ -79,47 +79,47 @@ public class Entry {
      * @return The debit
      */
     public String getDebit() {
-<span class="nc" id="L82">        return debit;</span>
+<span class="nc" id="L82">        return this.debit;</span>
     }
 
     /**
      *
      * @param debit The debit
      */
-    public void setDebit(String debit) {
-<span class="nc" id="L90">        this.debit = debit;</span>
+    public final void setDebit(final String dbt) {
+<span class="nc" id="L90">        this.debit = dbt;</span>
 <span class="nc" id="L91">    }</span>
 
     /**
      *
      * @return The credit
      */
-    public String getCredit() {
-<span class="nc" id="L98">        return credit;</span>
+    public final String getCredit() {
+<span class="nc" id="L98">        return this.credit;</span>
     }
 
     /**
      *
      * @param credit The credit
      */
-    public void setCredit(String credit) {
-<span class="nc" id="L106">        this.credit = credit;</span>
+    public void setCredit(final String cdt) {
+<span class="nc" id="L106">        this.credit = cdt;</span>
 <span class="nc" id="L107">    }</span>
 
     /**
      *
      * @return The type
      */
-    public Type getType() {
-<span class="nc" id="L114">        return type;</span>
+    public final Type getType() {
+<span class="nc" id="L114">        return this.type;</span>
     }
 
     /**
      *
      * @param type The type
      */
-    public void setType(Type type) {
-<span class="nc" id="L122">        this.type = type;</span>
+    public void setType(final Type typ) {
+<span class="nc" id="L122">        this.type = typ;</span>
 <span class="nc" id="L123">    }</span>
 
     /**
@@ -127,7 +127,7 @@ public class Entry {
      * @return The amount
      */
     public double getAmount() {
-<span class="nc" id="L130">        return amount;</span>
+<span class="nc" id="L130">        return this.amount;</span>
     }
 
     /**
@@ -143,15 +143,15 @@ public class Entry {
      * @return The date
      */
     public Date getDate() {
-<span class="nc" id="L146">        return date;</span>
+<span class="nc" id="L146">        return this.date;</span>
     }
 
     /**
      *
      * @param date The date
      */
-    public void setDate(Date date) {
-<span class="nc" id="L154">        this.date = date;</span>
+    public final void setDate(final Date dat) {
+<span class="nc" id="L154">        this.date = dat;</span>
 <span class="nc" id="L155">    }</span>
 
     /**
@@ -159,30 +159,30 @@ public class Entry {
      * @return The beneficiary
      */
     public String getBeneficiary() {
-<span class="nc" id="L162">        return beneficiary;</span>
+<span class="nc" id="L162">        return this.beneficiary;</span>
     }
 
     /**
      *
      * @param beneficiary The beneficiary
      */
-    public void setBeneficiary(String beneficiary) {
-<span class="nc" id="L170">        this.beneficiary = beneficiary;</span>
+    public final void setBeneficiary(final String ben) {
+<span class="nc" id="L170">        this.beneficiary = ben;</span>
 <span class="nc" id="L171">    }</span>
 
     /**
      *
      * @return The beneficiary
      */
-    public String getAccount() {
-<span class="nc" id="L178">        return account;</span>
+    public final String getAccount() {
+<span class="nc" id="L178">        return this.account;</span>
     }
 
     /**
      *
      * @param beneficiary The beneficiary
      */
-    public void setAccount(final String acct) {
+    public final void setAccount(final String acct) {
 <span class="nc" id="L186">        this.account = acct;</span>
 <span class="nc" id="L187">    }</span>
 
@@ -190,38 +190,39 @@ public class Entry {
      *
      * @return The transaction narration
      */
-    public String getNarration() {
-<span class="nc" id="L194">        return narration;</span>
+    public final String getNarration() {
+<span class="nc" id="L194">        return this.narration;</span>
     }
 
     /**
      *
      * @param narrat The transaction narration
      */
-    public void setNarration(final String narrat) {
+    public final void setNarration(final String narrat) {
 <span class="nc" id="L202">        this.narration = narrat;</span>
 <span class="nc" id="L203">    }</span>
 
     @Override
     public String toString() {
-<span class="nc" id="L207">        return new StringBuilder(debit).append(credit).append(amount).append(reference)</span>
-<span class="nc" id="L208">                .append(type).append(date).append(beneficiary).toString();</span>
+<span class="fc" id="L207">        return new StringBuilder(this.debit).append(this.credit).append(this.amount)</span>
+<span class="fc" id="L208">                .append(this.reference).append(this.type).append(this.date)</span>
+<span class="fc" id="L209">                .append(this.beneficiary).toString();</span>
     }
 
     @Override
     public int hashCode() {
-<span class="nc" id="L213">        return this.toString().hashCode();</span>
+<span class="nc" id="L214">        return this.toString().hashCode();</span>
     }
 
     @Override
     public boolean equals(Object other) {
-<span class="nc bnc" id="L218" title="All 2 branches missed.">        if (other == this) {</span>
-<span class="nc" id="L219">            return true;</span>
+<span class="pc bpc" id="L219" title="1 of 2 branches missed.">        if (other == this) {</span>
+<span class="nc" id="L220">            return true;</span>
         }
-<span class="nc bnc" id="L221" title="All 2 branches missed.">        if ((other instanceof Entry) == false) {</span>
-<span class="nc" id="L222">            return false;</span>
+<span class="pc bpc" id="L222" title="1 of 2 branches missed.">        if ((other instanceof Entry) == false) {</span>
+<span class="nc" id="L223">            return false;</span>
         }
-<span class="nc" id="L224">        return ((Entry) other).toString().equals(this.toString());</span>
+<span class="fc" id="L225">        return ((Entry) other).toString().equals(this.toString());</span>
     }
 
 }

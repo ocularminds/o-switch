@@ -1,7 +1,7 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
-oswitch-core,com.ocularminds.oswitch.core,Fault,68,0,0,0,29,0,14,0,14,0
+oswitch-core,com.ocularminds.oswitch.core,Fault,46,22,0,0,20,9,9,5,9,5
 oswitch-core,com.ocularminds.oswitch.core,Entry.Type,38,0,0,0,2,0,4,0,4,0
-oswitch-core,com.ocularminds.oswitch.core,Entry,132,0,4,0,44,0,27,0,25,0
+oswitch-core,com.ocularminds.oswitch.core,Entry,81,50,2,2,34,11,24,3,22,3
 oswitch-core,com.ocularminds.oswitch.common,XmlFile.Source.new XmlFile.Source() {...},15,0,0,0,3,0,2,0,2,0
 oswitch-core,com.ocularminds.oswitch.common,Identifier.Type,9,29,0,0,0,2,2,2,2,2
 oswitch-core,com.ocularminds.oswitch.common,XmlFile.Source.new XmlFile.Source() {...},13,0,0,0,2,0,2,0,2,0

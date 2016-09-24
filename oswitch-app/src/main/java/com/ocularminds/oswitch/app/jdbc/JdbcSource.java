@@ -17,12 +17,12 @@ public final class JdbcSource {
     private static Logger logger = Logger.getLogger(JdbcSource.class.getName());
 
     public JdbcSource(final DataSource src) {
-        source = src;
+        this.source = src;
     }
 
     public JdbcSource(String jnd) {
         try {
-            source =
+            this.source =
                     (DataSource) (new InitialContext()).lookup(String.format("java:/%s",
                             new Object[] {jnd}));
         } catch (Exception ex) {
@@ -31,39 +31,39 @@ public final class JdbcSource {
     }
 
     public DataSource get() throws Exception {
-        return source;
+        return this.source;
     }
 
     public Connection connection() throws Exception {
-        return get().getConnection();
+        return this.get().getConnection();
     }
 
     public final void close(Connection con, PreparedStatement ps) {
-        close(con, null, ps, null, null);
+        this.close(con, null, ps, null, null);
     }
 
     public final void close(Connection con, PreparedStatement ps, ResultSet rs) {
-        close(con, null, ps, null, rs);
+        this.close(con, null, ps, null, rs);
     }
 
     public final void close(Connection con, CallableStatement cs) {
-        close(con, null, null, cs, null);
+        this.close(con, null, null, cs, null);
     }
 
     public final void close(Connection con, CallableStatement cs, ResultSet rs) {
-        close(con, null, null, cs, rs);
+        this.close(con, null, null, cs, rs);
     }
 
     public final void close(Connection con, Statement s) {
-        close(con, s, null, null, null);
+        this.close(con, s, null, null, null);
     }
 
     public final void close(Connection con, Statement s, ResultSet rs) {
-        close(con, s, null, null, rs);
+        this.close(con, s, null, null, rs);
     }
 
     public final void close(Connection con) {
-        close(con, null, null, null, null);
+        this.close(con, null, null, null, null);
     }
 
     public final void close(Connection con, Statement s, PreparedStatement ps,
