@@ -46,7 +46,6 @@ public class TransferProcessor implements Processor {
             Transaction tran = new Transaction();
             tran.setChannel(Transaction.Channel.ATM);
 
-
             Fault fault = provider.transfer(entry);
             request.set(39, fault.getError());
             if (fault.getError().equals("00")) {

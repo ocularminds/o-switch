@@ -15,6 +15,7 @@ import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import org.mockito.Mockito;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -57,7 +58,6 @@ public class CoreTest {
 
     @InjectMocks
     private OsCore core;
-
 
     @Before
     public void setUp() throws Exception {
@@ -126,6 +126,7 @@ public class CoreTest {
         when(processors.get(anyString())).thenReturn("TRANSFER");
         when(request.getBytes(52)).thenReturn("TRANSFER".getBytes());
         when(provider.transfer(anyObject())).thenReturn(new Fault("00", "Success"));
+        // Mockito.doNothing().when(transactions.create(anyObject()));
         boolean response = core.process(source, request);
         assertTrue(response);
     }
