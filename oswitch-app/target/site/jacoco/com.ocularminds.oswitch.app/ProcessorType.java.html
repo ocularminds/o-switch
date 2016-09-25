@@ -4,16 +4,16 @@ import com.ocularminds.oswitch.core.CoreBankingProvider;
 import org.jpos.iso.ISOException;
 import org.jpos.iso.ISOMsg;
 
-<span class="nc" id="L7">public enum ProcessorType {</span>
-<span class="nc" id="L8">    BALANCE {</span>
+<span class="fc" id="L7">public enum ProcessorType {</span>
+<span class="fc" id="L8">    BALANCE {</span>
 
         @Override
         public ISOMsg process(final CoreBankingProvider provider, ISOMsg req) throws ISOException {
-<span class="nc" id="L12">            return new BalanceProcessor(provider, req).process();</span>
+<span class="fc" id="L12">            return new BalanceProcessor(provider, req).process();</span>
         }
 
     },
-<span class="nc" id="L16">    BILL {</span>
+<span class="fc" id="L16">    BILL {</span>
 
         @Override
         public ISOMsg process(final CoreBankingProvider provider, ISOMsg req) throws ISOException {
@@ -21,7 +21,7 @@ import org.jpos.iso.ISOMsg;
         }
 
     },
-<span class="nc" id="L24">    TRANSFER {</span>
+<span class="fc" id="L24">    TRANSFER {</span>
 
         @Override
         public ISOMsg process(final CoreBankingProvider provider, ISOMsg req) throws ISOException {
