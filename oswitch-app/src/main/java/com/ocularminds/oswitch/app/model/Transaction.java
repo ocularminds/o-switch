@@ -6,6 +6,7 @@ import com.ocularminds.oswitch.core.Entry;
 public class Transaction extends Entry {
 
     private Channel channel;
+    private String status;
 
     // private String
 
@@ -31,5 +32,13 @@ public class Transaction extends Entry {
 
     public final void setChannel(final Channel chan) {
         this.channel = chan;
+    }
+
+    public String getStatus() {
+        return this.status;
+    }
+
+    public final void setStatus(final String stat) {
+        this.status = stat;
     }
 }

@@ -8,15 +8,17 @@ public enum ProcessorType {
     BALANCE {
 
         @Override
-        public ISOMsg process(final CoreBankingProvider provider, ISOMsg req) throws ISOException {
-            return new BalanceProcessor(provider, req).process();
+        public ISOMsg process(final CoreBankingProvider provider, Service service, ISOMsg req)
+                throws ISOException {
+            return new BalanceProcessor(provider, service, req).process();
         }
 
     },
     BILL {
 
         @Override
-        public ISOMsg process(final CoreBankingProvider provider, ISOMsg req) throws ISOException {
+        public ISOMsg process(final CoreBankingProvider provider, Service service, ISOMsg req)
+                throws ISOException {
             return req;
         }
 
@@ -24,12 +26,14 @@ public enum ProcessorType {
     TRANSFER {
 
         @Override
-        public ISOMsg process(final CoreBankingProvider provider, ISOMsg req) throws ISOException {
-            return req;
+        public ISOMsg process(final CoreBankingProvider provider, Service service, ISOMsg req)
+                throws ISOException {
+            return new TransferProcessor(provider, service, req).process();
         }
 
     };
 
-    public abstract ISOMsg process(CoreBankingProvider provider, ISOMsg req) throws ISOException;
+    public abstract ISOMsg process(CoreBankingProvider provider, Service service, ISOMsg req)
+            throws ISOException;
 
 }

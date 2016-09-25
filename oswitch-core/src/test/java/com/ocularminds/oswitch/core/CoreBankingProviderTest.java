@@ -15,9 +15,16 @@ import java.util.List;
 public class CoreBankingProviderTest {
 
     @Test
-    public void testIdentifierNumber() throws Exception {
+    public void testIdentifierShortNumber() throws Exception {
         String actual = new Identifier().next();
         final int EXPECTED = 10;
+        assertEquals(new Integer(actual.length()), new Integer(EXPECTED));
+    }
+
+    @Test
+    public void testIdentifierLongNumber() throws Exception {
+        String actual = new Identifier(Identifier.Type.LONG).next();
+        final int EXPECTED = 20;
         assertEquals(new Integer(actual.length()), new Integer(EXPECTED));
     }
 
