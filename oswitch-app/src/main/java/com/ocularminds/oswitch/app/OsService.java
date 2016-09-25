@@ -10,36 +10,44 @@ import com.ocularminds.oswitch.app.model.Transactions;
 
 public class OsService implements Service {
 
-    JdbcSource source;
+    Transactions transactions;
+    Cardless cardless;
+    Preferences preferences;
 
     public OsService(final JdbcSource src) {
-        this.source = src;
+        this(new Transactions(src), new Cardless(src), new Preferences(src));
+    }
+
+    public OsService(final Transactions trans, final Cardless cads, final Preferences prefs) {
+        this.transactions = trans;
+        this.cardless = cads;
+        this.preferences = prefs;
     }
 
     public void create(final Transaction transaction) {
-        new Transactions(this.source).add(transaction);
+        this.transactions.add(transaction);
     }
 
 
     public Transaction find(final Transaction tran) {
-        return new Transactions(this.source).find(tran.getId());
+        return this.transactions.find(tran.getId());
     }
 
     public void create(Cardlex cardlex) {
-        new Cardless(this.source).add(cardlex);
+        this.cardless.add(cardlex);
     }
 
 
     public Cardlex find(String account, double amount) {
-        return new Cardless(this.source).find(account, amount);
+        return this.cardless.find(account, amount);
     }
 
     public void create(final Preference pref) {
-        new Preferences(this.source).add(pref);
+        this.preferences.add(pref);
     }
 
     public Preference find(String account) {
-        return new Preferences(this.source).find(account);
+        return this.preferences.find(account);
     }
 
 }

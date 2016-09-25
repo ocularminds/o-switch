@@ -10,11 +10,13 @@ import java.util.Map;
 public class BalanceProcessor implements Processor {
 
     CoreBankingProvider provider;
+    Service service;
     ISOMsg request;
 
-    public BalanceProcessor(final CoreBankingProvider prov, final ISOMsg req) {
+    public BalanceProcessor(final CoreBankingProvider prov, final Service svc, final ISOMsg req) {
         this.provider = prov;
         this.request = req;
+        this.service = svc;
     }
 
     public ISOMsg process() throws ISOException {
@@ -23,7 +25,9 @@ public class BalanceProcessor implements Processor {
         String ref = request.getString(11);
         String debit = request.getString(102);
         byte[] pinbytes = request.getBytes(52);
-        pinbytes = "1234".getBytes();
+        if (pinbytes == null) {
+            pinbytes = "0000".getBytes();
+        }
         String pin = new String(pinbytes);
         if (isValidPinOrAccessCode(pin)) {
             Entry entry = new Entry(debit, null, 0.00d);

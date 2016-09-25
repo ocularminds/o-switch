@@ -26,11 +26,13 @@ public class OsCore implements ISORequestListener {
 
     final Logger logger = Logger.getLogger(OsCore.class.getName());
     private CoreBankingProvider provider;
+    private Service service;
     private Map<String, String> processors;
 
-    public OsCore(final CoreBankingProvider prov, final Map<String, String> codes) {
+    public OsCore(final CoreBankingProvider prov, final Service svc, final Map<String, String> codes) {
         this.provider = prov;
         this.processors = codes;
+        this.service = svc;
     }
 
     public boolean process(ISOSource source, ISOMsg request) {
@@ -40,7 +42,7 @@ public class OsCore implements ISORequestListener {
         try {
             String processCode = response.getString(3);
             ProcessorType pt = ProcessorType.valueOf(this.processors.get(processCode));
-            response = pt.process(provider, response);
+            response = pt.process(provider, service, response);
             response.setResponseMTI();
             response.set(39, "00");
             source.send(response);
@@ -66,7 +68,7 @@ public class OsCore implements ISORequestListener {
         ((LogSource) channel).setLogger(loga, "channel");
         ISOServer server = new ISOServer(8000, channel, new ThreadPool(1, 100, "oscore-pool"));
         server.setLogger(loga, "server");
-        server.addISORequestListener(new OsCore(provider, processors));
+        server.addISORequestListener(new OsCore(provider, service, processors));
         new Thread(server).start();
     }
 }

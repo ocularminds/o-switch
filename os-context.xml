@@ -26,7 +26,20 @@
         </property>  
    </bean>   
   <bean id="service" class="com.ocularminds.oswitch.app.OsService">
-       <constructor-arg ref="jdbcSource"/>
+       <constructor-arg ref="transactions"/>
+       <constructor-arg ref="cardless"/>
+       <constructor-arg ref="preferences"/>
+  </bean>
+    
+    <bean id="service" class="com.ocularminds.oswitch.app.model.Transactions">
+         <constructor-arg ref="transactions"/>
+  </bean>
+    
+    <bean id="service" class="com.ocularminds.oswitch.app.model.Cardless">
+         <constructor-arg ref="cardless"/>
+  </bean>    
+    <bean id="service" class="com.ocularminds.oswitch.app.model.Preferences">
+         <constructor-arg ref="preferences"/>
   </bean>
   <bean id="jdbcSource" class="com.ocularminds.oswitch.app.jdbc.JdbcSource">
     <constructor-arg ref="hikaricp"/>

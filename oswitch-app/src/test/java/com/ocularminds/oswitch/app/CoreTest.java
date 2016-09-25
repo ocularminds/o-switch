@@ -50,6 +50,9 @@ public class CoreTest {
     CoreBankingProvider provider;
 
     @Mock
+    OsService service;
+
+    @Mock
     Map<String, String> processors;
 
     @InjectMocks
@@ -114,12 +117,15 @@ public class CoreTest {
         isoMsg.set(7, "110722180");
         isoMsg.set(11, "123456");
         isoMsg.set(44, "A5DFGR");
+
+        isoMsg.set(102, "419");
+        isoMsg.set(103, "914");
         isoMsg.set(105, "ABCDEFGHIJ 1234567890");
 
         when(request.clone()).thenReturn(isoMsg);
         when(processors.get(anyString())).thenReturn("TRANSFER");
         when(request.getBytes(52)).thenReturn("TRANSFER".getBytes());
-        when(provider.balance(anyObject())).thenReturn(new Fault("30", "Insufficient balance"));
+        when(provider.transfer(anyObject())).thenReturn(new Fault("00", "Success"));
         boolean response = core.process(source, request);
         assertTrue(response);
     }
