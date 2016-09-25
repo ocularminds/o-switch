@@ -12,7 +12,7 @@ public interface Processor {
     ISOMsg process() throws ISOException;
 
     default String accountType(String pcode) {
-<span class="nc" id="L15">        return pcode.substring(2, 4);</span>
+<span class="fc" id="L15">        return pcode.substring(2, 4);</span>
     }
 
     default String transactionType(String pcode) {

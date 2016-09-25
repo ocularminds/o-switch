@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="4" failures="0" name="com.ocularminds.oswitch.app.OsServiceTest" time="0.001" errors="0" skipped="0">
+<testsuite tests="4" failures="0" name="com.ocularminds.oswitch.app.OsServiceTest" time="0.015" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_102\jre\bin"/>
@@ -63,6 +63,6 @@
   </properties>
   <testcase classname="com.ocularminds.oswitch.app.OsServiceTest" name="testNominalListCategoriesHasCorrectOrder" time="0"/>
   <testcase classname="com.ocularminds.oswitch.app.OsServiceTest" name="testNominalListAllInsightsCategories" time="0"/>
-  <testcase classname="com.ocularminds.oswitch.app.OsServiceTest" name="testNominalListCategoriesInsightHasCorrectOrder" time="0.001"/>
+  <testcase classname="com.ocularminds.oswitch.app.OsServiceTest" name="testNominalListCategoriesInsightHasCorrectOrder" time="0.015"/>
   <testcase classname="com.ocularminds.oswitch.app.OsServiceTest" name="testNominalListNonBetaInsightsCategories" time="0"/>
 </testsuite>

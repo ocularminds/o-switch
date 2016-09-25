@@ -18,10 +18,10 @@ oswitch-app,com.ocularminds.oswitch.app.model,Cardless.new Outcome() {...},16,0,
 oswitch-app,com.ocularminds.oswitch.app,OsService,57,0,0,0,12,0,7,0,7,0
 oswitch-app,com.ocularminds.oswitch.app,OsCore,100,52,0,0,20,15,1,2,1,2
 oswitch-app,com.ocularminds.oswitch.app,ProcessorType,0,48,0,0,0,4,0,4,0,4
-oswitch-app,com.ocularminds.oswitch.app,BalanceProcessor,113,71,6,2,18,18,4,2,0,2
+oswitch-app,com.ocularminds.oswitch.app,BalanceProcessor,9,177,3,5,1,35,3,3,0,2
 oswitch-app,com.ocularminds.oswitch.app,CoreProcessor,10,0,0,0,4,0,3,0,3,0
 oswitch-app,com.ocularminds.oswitch.app,ProcessorType.new ProcessorType() {...},0,13,0,0,0,2,0,2,0,2
-oswitch-app,com.ocularminds.oswitch.app,Processor,10,2,0,0,2,1,2,1,2,1
-oswitch-app,com.ocularminds.oswitch.app,ProcessorType.new ProcessorType() {...},2,6,0,0,1,1,1,1,1,1
-oswitch-app,com.ocularminds.oswitch.app,ProcessorType.new ProcessorType() {...},2,6,0,0,1,1,1,1,1,1
+oswitch-app,com.ocularminds.oswitch.app,Processor,5,7,0,0,1,2,1,2,1,2
+oswitch-app,com.ocularminds.oswitch.app,ProcessorType.new ProcessorType() {...},0,8,0,0,0,2,0,2,0,2
+oswitch-app,com.ocularminds.oswitch.app,ProcessorType.new ProcessorType() {...},0,8,0,0,0,2,0,2,0,2
 oswitch-app,com.ocularminds.oswitch.app.jdbc,JdbcSource,253,0,8,0,76,0,18,0,14,0

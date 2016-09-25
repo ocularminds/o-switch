@@ -34,6 +34,7 @@ import static org.junit.Assert.assertTrue;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -61,7 +62,50 @@ public class CoreTest {
     }
 
     @Test
-    public void testProcessMessage() throws Exception {
+    public void testProcessFailedBalanceInquiry() throws Exception {
+        ISOMsg isoMsg = new ISOMsg();
+        isoMsg.setMTI("0200");
+        isoMsg.set(3, "201234");
+        isoMsg.set(4, "10000");
+        isoMsg.set(7, "110722180");
+        isoMsg.set(11, "123456");
+        isoMsg.set(44, "A5DFGR");
+        isoMsg.set(105, "ABCDEFGHIJ 1234567890");
+        when(request.clone()).thenReturn(isoMsg);
+        when(processors.get(anyString())).thenReturn("BALANCE");
+        when(request.getBytes(52)).thenReturn("BALANCE".getBytes());
+        when(provider.balance(anyObject())).thenReturn(new Fault("30", "Insufficient balance"));
+        boolean response = core.process(source, request);
+        assertTrue(response);
+    }
+
+    @Test
+    public void testProcessSuccessBalanceInquiry() throws Exception {
+        Fault fault = new Fault("00", "Success Ok.");
+        final String LEDGER_BALANCE = "ledger";
+        final String AVAILABLE_BALANCE = "available";
+        Map<String, Double> balances = new HashMap();
+        balances.put(AVAILABLE_BALANCE, new Double(150.00));
+        balances.put(LEDGER_BALANCE, new Double(150.00));
+        fault.setData(balances);
+        ISOMsg isoMsg = new ISOMsg();
+        isoMsg.setMTI("0200");
+        isoMsg.set(3, "201234");
+        isoMsg.set(4, "10000");
+        isoMsg.set(7, "110722180");
+        isoMsg.set(11, "123456");
+        isoMsg.set(44, "A5DFGR");
+        isoMsg.set(105, "ABCDEFGHIJ 1234567890");
+        when(request.clone()).thenReturn(isoMsg);
+        when(processors.get(anyString())).thenReturn("BALANCE");
+        when(request.getBytes(52)).thenReturn("BALANCE".getBytes());
+        when(provider.balance(anyObject())).thenReturn(fault);
+        boolean response = core.process(source, request);
+        assertTrue(response);
+    }
+
+    @Test
+    public void testProcessFundTransfer() throws Exception {
 
         ISOMsg isoMsg = new ISOMsg();
         isoMsg.setMTI("0200");
@@ -73,8 +117,28 @@ public class CoreTest {
         isoMsg.set(105, "ABCDEFGHIJ 1234567890");
 
         when(request.clone()).thenReturn(isoMsg);
-        when(processors.get(anyString())).thenReturn("BALANCE");
-        when(request.getBytes(52)).thenReturn("BALANCE".getBytes());
+        when(processors.get(anyString())).thenReturn("TRANSFER");
+        when(request.getBytes(52)).thenReturn("TRANSFER".getBytes());
+        when(provider.balance(anyObject())).thenReturn(new Fault("30", "Insufficient balance"));
+        boolean response = core.process(source, request);
+        assertTrue(response);
+    }
+
+    @Test
+    public void testProcessBillMessage() throws Exception {
+
+        ISOMsg isoMsg = new ISOMsg();
+        isoMsg.setMTI("0200");
+        isoMsg.set(3, "201234");
+        isoMsg.set(4, "10000");
+        isoMsg.set(7, "110722180");
+        isoMsg.set(11, "123456");
+        isoMsg.set(44, "A5DFGR");
+        isoMsg.set(105, "ABCDEFGHIJ 1234567890");
+
+        when(request.clone()).thenReturn(isoMsg);
+        when(processors.get(anyString())).thenReturn("BILL");
+        when(request.getBytes(52)).thenReturn("BILL".getBytes());
         when(provider.balance(anyObject())).thenReturn(new Fault("30", "Insufficient balance"));
         boolean response = core.process(source, request);
         assertTrue(response);

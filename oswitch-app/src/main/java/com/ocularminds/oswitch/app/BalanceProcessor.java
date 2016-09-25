@@ -44,13 +44,14 @@ public class BalanceProcessor implements Processor {
                                 // cash.* 42 Amount surcharge
                 sb.append("NGNK");// +Currency Code N3+ Currency minor unit N1+
                 sb.append(availableAmountSign);// +Amount Sign A1 - C for Credit, D for Debit
-                sb.append(String.format("%012d", available.doubleValue() * 100));// +Value amount
-                                                                                 // N12
+                sb.append(String.format("%012d", (int) (available.doubleValue() * 100)));// +Value
+                                                                                         // amount
+                // N12
                 sb.append(accountType(pcode));
                 sb.append("02");
                 sb.append("NGNK");
                 sb.append(ledgerAmountSign);
-                sb.append(String.format("%012d", ledger.doubleValue() * 100));
+                sb.append(String.format("%012d", (int) (ledger.doubleValue() * 100)));
                 request.set(54, sb.toString());
             }
 
