@@ -23,7 +23,9 @@ public class Entry {
      * No args constructor for use in serialization
      *
      */
-    public Entry() {}
+    public Entry() {
+        this.date = new Date();
+    }
 
     /**
      *
@@ -40,6 +42,7 @@ public class Entry {
         this.debit = deb;
         this.credit = cre;
         this.amount = amt;
+        this.date = new Date();
     }
 
     /**
